@@ -1,0 +1,26 @@
+{
+  "name": "stripe_sale",
+  "version": "1.0.0",
+  "description": "React.js + Express.js + Stripe API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xdMR/stripe_sale.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xdMR/stripe_sale/issues"
+  },
+  "homepage": "https://github.com/xdMR/stripe_sale#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "stripe": "^11.5.0"
+  }
+}
