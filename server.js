@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 var cors = require('cors');
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
@@ -12,10 +14,36 @@ app.post("/checkout", async (req,resp)=>{
     req.body.item
     [
         {
-            id:1,
+            price:1,
             quantity:3,
         }
     ]
     */
+    console.log(req.body);
 
-})
+    //Format to Stripe prefered naming
+    const items = req.body.items;
+    let lineItems =[];
+    items.forEach((item)=> {
+        lineItems.push(
+            {
+                price: item.id,
+                quantity: item.quantity
+            }
+        )
+    });
+
+    const session = await stripe.checkout.sessions.create({
+        line_items: lineItems,
+        mode: 'payment',
+        success_url: "http://localhost:3000/success",
+        cancel_url: "http://localhost:3000/cancel"
+    });
+
+    resp.send(JSON.stringify({
+        url: session.url
+    }));
+
+});
+
+app.listen(4000, () => console.log("Listening on port 4000!"));

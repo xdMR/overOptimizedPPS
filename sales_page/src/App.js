@@ -1,22 +1,41 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const items = [
+    {id:"price_1MLYKjCpotfJBdLxeR976tgu", quantity:1},
+    {id:"price_1MLYMsCpotfJBdLxCNAu52ft", quantity:4},
+    // cant mix payment types
+    {id:"price_1MLyEFCpotfJBdLxfsfwb0Qd", quantity:1}
+  ]
+
+
+  const checkout = async () => {
+    await fetch('http://localhost:4000/checkout', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(
+          {items: items}
+          )
+    }).then((response) => {
+        return response.json();
+    }).then((response) => {
+        if(response.url) {
+            window.location.assign(response.url);  //Forward User To Stripe
+        }
+    }).catch(error=>console.error('Error',error));
+}
+
+
+  const handleClick = ()=>{
+    checkout();
+    console.log("handle click")
+  }
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+       <button onClick={handleClick} style={{fontSize:"22px", padding:"5px"}}>Start Checkout</button>
       </header>
     </div>
   );
