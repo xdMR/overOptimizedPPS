@@ -22,6 +22,7 @@ app.post("/checkout", async (req,resp)=>{
     console.log(req.body);
 
     //Format to Stripe prefered naming
+    // we have items and Stripe requires "price"
     const items = req.body.items;
     let lineItems =[];
     items.forEach((item)=> {
