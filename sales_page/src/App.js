@@ -1,11 +1,11 @@
-import './App.css';
+import './Core.css';
 
 function App() {
   const items = [
     {id:"price_1MLYKjCpotfJBdLxeR976tgu", quantity:1},
     {id:"price_1MLYMsCpotfJBdLxCNAu52ft", quantity:4},
     // cant mix payment types
-    {id:"price_1MLyEFCpotfJBdLxfsfwb0Qd", quantity:1}
+    // {id:"price_1MLyEFCpotfJBdLxfsfwb0Qd", quantity:1}
   ]
 
 
