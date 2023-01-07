@@ -1,4 +1,5 @@
 import './Core.css';
+import {Cart, Headline, SliderTeam, SelectPackage} from './components'
 
 function App() {
   const items = [
@@ -35,6 +36,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Cart/>
+        <Headline/>
+        <SliderTeam/>
+        <SelectPackage/>
        <button onClick={handleClick} style={{fontSize:"22px", padding:"5px"}}>Start Checkout</button>
       </header>
     </div>
