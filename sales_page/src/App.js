@@ -1,6 +1,7 @@
 import "./Core.css";
 import { Cart, Headline, SliderTeam, SelectPackage, Button } from "./components";
 import { Cancel, Success, TeamSelection, PlanSelection } from "./sections";
+import CompareButtons from "./sections/CompareButtons/CompareButtons";
 import * as React from "react";
 
 import { BrowserRouter, Routes, Route, Outlet, Link } from "react-router-dom";
@@ -44,11 +45,11 @@ function App() {
             <Route index element={<PlanSelection />} />
             <Route path="success" element={<Success />} />
             <Route path="cancel" element={<Cancel />} />
+            <Route path="buttons" element={<CompareButtons />} />
           </Routes>
         </BrowserRouter>
 
-          <Button boring={true} title="Boring"/>
-          <Button boring={false} title="Microinteractions"/>
+          <Button boring={false} title="Buy"/>
 
         <Cart />
         <Headline />

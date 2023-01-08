@@ -2,7 +2,7 @@ import React from 'react'
 import './button.css'
 function button(props) {
   return (
-    <button className='btn'>{props.title}</button>
+    <button  className={`${props.boring ? "btn-boring":"btn"}`}>{props.title}</button>
   )
 }
 
