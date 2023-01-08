@@ -47,7 +47,9 @@ function App() {
           </Routes>
         </BrowserRouter>
 
-          <Button title="this is title"/>
+          <Button boring={true} title="Boring"/>
+          <Button boring={false} title="Microinteractions"/>
+
         <Cart />
         <Headline />
         <SliderTeam />
