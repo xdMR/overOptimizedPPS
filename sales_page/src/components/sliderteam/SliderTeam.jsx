@@ -19,7 +19,9 @@ function SliderTeam() {
   return (
     <>
     <h1>{sliderValue}</h1>
-        <div className="slider" style={{width:"250px", height:"100px",display:"block"}}>
+        <h2 style={{maxWidth:"350px", textAlign:"center", margin:"0 auto", fontSize:"22px", paddingBottom:"50px"}}>Hey John, How many people are on your team?</h2>
+        <div className="teamPricing"> {(sliderValue>1)?"🧑🏻‍🤝‍🧑🏾 Team Pricing":"🧑 Individual Pricing"}</div>
+        <div className="slider" style={{width:"250px", height:"100px",display:"block", margin:"0 auto"}}>
         <Slider
                id="slider"
               defaultValue={2}

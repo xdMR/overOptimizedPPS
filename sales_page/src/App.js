@@ -59,8 +59,7 @@ function App() {
 
 
         <Cart />
-        <Headline />
-        <SliderTeam />
+
         <SelectPackage />
         <button
           onClick={handleClick}

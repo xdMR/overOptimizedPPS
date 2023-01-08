@@ -1,3 +1,10 @@
+.teamPricing{
+  font-weight: 600;
+  font-size: 22px;
+  text-align: right;
+
+}
+
 .rc-slider {
     position: relative;
     width: 100%;
