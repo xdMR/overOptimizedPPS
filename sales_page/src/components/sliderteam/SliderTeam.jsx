@@ -1,13 +1,13 @@
 import React from 'react';
 import { useState } from 'react';
 import './sliderteam.css';
-import Slider  from 'rc-slider';
+import Slider from 'rc-slider';
 
 
 function SliderTeam() {
   const [sliderValue, setSliderValue] = useState(2);
   const heightMarks = {
-    1: "1",
+    1: "just me",
     2: "2",
     3: "3",
     4: "4",
@@ -16,30 +16,45 @@ function SliderTeam() {
     7: "7",
   };
 
+
+  // style={{fotnSize:"30px"}}
   return (
     <>
-    <h1>{sliderValue}</h1>
-        <h2 style={{maxWidth:"350px", textAlign:"center", margin:"0 auto", fontSize:"22px", paddingBottom:"50px"}}>Hey John, How many people are on your team?</h2>
-        <div className="teamPricing"> {(sliderValue>1)?"🧑🏻‍🤝‍🧑🏾 Team Pricing":"🧑 Individual Pricing"}</div>
-        <div className="slider" style={{width:"250px", height:"100px",display:"block", margin:"0 auto"}}>
+      <h2 style={{ maxWidth: "350px", textAlign: "center", margin: "0 auto", fontSize: "22px", paddingBottom: "20px", paddingTop:"30p" }}>Hey John, how many people are on your team?</h2>
+      <div className="teamPricing"> <TeamPricing number={sliderValue}/></div>
+      <div className="slider" style={{ width: "250px", height: "100px", display: "block", margin: "0 auto" }}>
         <Slider
-               id="slider"
-              defaultValue={2}
-              min={1}
-              max={7}
-              step={1}
-              style={{ width: "100%" }}
-              valueLabelDisplay="auto"
-              marks={heightMarks}
-              keyboard={true}
-              onChange={(value) => {
-                setSliderValue(value)
-              }}
+          id="slider"
+          defaultValue={2}
+          min={1}
+          max={7}
+          step={1}
+          style={{ width: "100%" }}
+          valueLabelDisplay="auto"
+          marks={heightMarks}
+          keyboard={true}
+          onChange={(value) => {
+            setSliderValue(value)
+          }}
 
-            />
-        </div>
+        />
+      </div>
     </>
   )
+}
+
+function TeamPricing(props) {
+  return (
+    <>
+      {(props.number > 1) ? <>🧑🏿‍🤝‍🧑🏻 Team Pricing [ <span style={{ fontSize: "32px", position:"relative", bottom:"-3px" }}>
+       {props.number}
+      </span> ] </> : <> 🧍 Individual Pricing [ <span style={{ fontSize: "32px", position:"relative", bottom:"-3px" }}>
+       {props.number}
+      </span> ]</>}
+
+    </>
+
+  );
 }
 
 export default SliderTeam
