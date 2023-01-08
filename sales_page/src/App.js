@@ -37,6 +37,11 @@ function App() {
     checkout();
     console.log("handle click");
   };
+
+  const play = ()=>{
+    console.log("this")
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -49,7 +54,9 @@ function App() {
           </Routes>
         </BrowserRouter>
 
-          <Button boring={false} title="Buy"/>
+          <Button boring={false} title="Buy"  onClick={() => {play()}}
+ />
+
 
         <Cart />
         <Headline />

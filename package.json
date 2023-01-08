@@ -22,6 +22,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "react-router-dom": "^6.6.1",
     "stripe": "^11.5.0"
   }
 }
