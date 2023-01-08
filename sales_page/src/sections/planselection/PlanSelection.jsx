@@ -1,9 +1,15 @@
 import React from 'react'
+import { Headline, SliderTeam } from "../../components";
 import './planselection.css'
 
 function PlanSelection() {
   return (
-    <div><h1>Plan Selection</h1></div>
+    <>
+      <Headline title="UX Metrics Your Stakeholders
+Can't Ignore " pretitle="Pricing" sendStyle={{ maxWidth: "400px", margin: "0 auto" }} />
+      <SliderTeam />
+
+    </>
   )
 }
 
