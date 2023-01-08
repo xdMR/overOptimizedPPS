@@ -1,0 +1,32 @@
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--buttonTextColor, #fff);
+    max-width: 10em;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.125rem;
+    padding: 0.8em 2em;
+    background: var(--accent, black);
+    -webkit-transition: opacity 250ms linear, -webkit-transform 250ms ease-in-out;
+    transition: opacity 250ms linear, -webkit-transform 250ms ease-in-out;
+    transition: transform 150ms ease-in-out, opacity 250ms linear;
+    transition: transform 150ms ease-in-out, opacity 250ms linear, -webkit-transform 250ms ease-in-out;
+    margin: 0.35em;
+    border: 2px solid black;
+}
+
+.btn:hover{
+    cursor: pointer;
+    opacity: 0.9;
+    transform: scale(0.95);
+}
+
+.btn:active {
+    cursor: pointer;
+    background-color:rgb(230, 230, 230);
+    color:black;
+    border: 2px solid black;
+
+}

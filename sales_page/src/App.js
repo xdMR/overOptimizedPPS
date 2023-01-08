@@ -1,9 +1,9 @@
 import "./Core.css";
-import {Cart, Headline, SliderTeam, SelectPackage} from './components'
+import { Cart, Headline, SliderTeam, SelectPackage, Button } from "./components";
 import { Cancel, Success, TeamSelection, PlanSelection } from "./sections";
 import * as React from "react";
 
-import {BrowserRouter, Routes, Route, Outlet, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet, Link } from "react-router-dom";
 
 function App() {
   const items = [
@@ -37,27 +37,29 @@ function App() {
     console.log("handle click");
   };
   return (
+    <div className="App">
+      <header className="App-header">
+        <BrowserRouter>
+          <Routes>
+            <Route index element={<PlanSelection />} />
+            <Route path="success" element={<Success />} />
+            <Route path="cancel" element={<Cancel />} />
+          </Routes>
+        </BrowserRouter>
 
-<div className="App">
-<header className="App-header">
-
-  <BrowserRouter>
-    <Routes>
-    <Route index element={<PlanSelection/>}/>
-    <Route path='success' element={<Success/>}/>
-    <Route path='cancel' element={<Cancel/>}/>
-    </Routes>
-  </BrowserRouter>
-
-  <Cart/>
-  <Headline/>
-  <SliderTeam/>
-  <SelectPackage/>
- <button onClick={handleClick} style={{fontSize:"22px", padding:"5px"}}>Start Checkout</button>
-</header>
-</div>
-
-
+          <Button title="this is title"/>
+        <Cart />
+        <Headline />
+        <SliderTeam />
+        <SelectPackage />
+        <button
+          onClick={handleClick}
+          style={{ fontSize: "22px", padding: "5px" }}
+        >
+          Start Checkout
+        </button>
+      </header>
+    </div>
   );
 }
 
