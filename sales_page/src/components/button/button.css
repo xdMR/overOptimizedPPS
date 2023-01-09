@@ -12,7 +12,6 @@
     -webkit-transition: opacity 250ms linear, -webkit-transform 250ms ease-in-out;
     transition: opacity 250ms linear, -webkit-transform 250ms ease-in-out;
     transition: transform 300ms ease-in-out, opacity 250ms linear;
-    margin: 0.35em;
     border: 2px solid black;
     transition:box-shadow 0.5s ease-in-out;
 }
