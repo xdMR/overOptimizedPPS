@@ -1,12 +1,16 @@
+import * as React from "react";
 import "./Core.css";
 import { Cart, Headline, SliderTeam, SelectPackage, Button } from "./components";
 import { Cancel, Success, TeamSelection, PlanSelection } from "./sections";
 import CompareButtons from "./sections/CompareButtons/CompareButtons";
-import * as React from "react";
+import CartProvider from './context/CartContext';
+
 
 import { BrowserRouter, Routes, Route, Outlet, Link } from "react-router-dom";
 
 function App() {
+
+
   const items = [
     { id: "price_1MLYKjCpotfJBdLxeR976tgu", quantity: 1 },
     { id: "price_1MLYMsCpotfJBdLxCNAu52ft", quantity: 4 },
@@ -38,13 +42,12 @@ function App() {
     console.log("handle click");
   };
 
-  const play = ()=>{
-    console.log("this")
-  }
+
 
   return (
     <div className="App">
       <header className="App-header">
+        <CartProvider>
         <BrowserRouter>
           <Routes>
             <Route index element={<PlanSelection />} />
@@ -53,9 +56,9 @@ function App() {
             <Route path="buttons" element={<CompareButtons />} />
           </Routes>
         </BrowserRouter>
+        </CartProvider>
 
-          <Button boring={false} title="Buy"  onClick={() => {play()}}
- />
+
 
 
         <Cart />

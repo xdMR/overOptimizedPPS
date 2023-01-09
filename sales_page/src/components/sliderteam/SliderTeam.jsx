@@ -3,9 +3,13 @@ import { useState } from 'react';
 import './sliderteam.css';
 import Slider from 'rc-slider';
 
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
+
 
 function SliderTeam() {
   const [sliderValue, setSliderValue] = useState(2);
+  const cart = useContext(CartContext);
   const heightMarks = {
     1: "just me",
     2: "2",
@@ -20,7 +24,7 @@ function SliderTeam() {
   // style={{fotnSize:"30px"}}
   return (
     <>
-      <h2 style={{ maxWidth: "350px", textAlign: "center", margin: "0 auto", fontSize: "22px", paddingBottom: "20px", paddingTop:"30p" }}>Hey John, how many people are on your team?</h2>
+      <h2 style={{ maxWidth: "350px", textAlign: "center", margin: "0 auto", fontSize: "22px", paddingBottom: "20px", paddingTop:"60px" }}>Hey John, how many people are on your team?</h2>
       <div className="teamPricing"> <TeamPricing number={sliderValue}/></div>
       <div className="slider" style={{ width: "250px", height: "100px", display: "block", margin: "0 auto" }}>
         <Slider
@@ -34,9 +38,13 @@ function SliderTeam() {
           marks={heightMarks}
           keyboard={true}
           onChange={(value) => {
-            setSliderValue(value)
+            setSliderValue(value);
+             cart.setCart({
+              teammembers:value,
+              plan: "price_1MLYMsCpotfJBdLxCNAu52ft",
+              gifts:0
+          })
           }}
-
         />
       </div>
     </>
