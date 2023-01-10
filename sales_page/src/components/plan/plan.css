@@ -44,6 +44,10 @@
 .pillow ul{
     color:rgb(105, 105, 109);
 }
+.pillow li li{
+    margin-top: 4px;
+    line-height: 1.8;
+}
 .pillow:hover ul{
     color:black;
 }
@@ -57,4 +61,13 @@
   }
   .pillowHeader svg{
     padding-right: 15px;
+  }
+  .topbutton {
+    padding-right: 10px;
+    font-size: 14px;
+    color:black;
+    text-align: right;
+  }
+  .topbutton a{
+    color:black;
   }

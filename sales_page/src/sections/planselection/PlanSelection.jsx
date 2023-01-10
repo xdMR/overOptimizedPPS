@@ -19,8 +19,12 @@ function PlanSelection() {
     seats:25-cart.cart.teammembers,
     buttonText:"Select Regular",
     pillows:[
-      {parent:"ParentTitle", children:["One", "Two", "Three"]},
       {child:"Five 90-minute live sessions with Jared Spool."},
+      {parent:"Ground-breaking concepts behind:", children:["UX Outcomes", "UX Success Metrics", "UX Progress Metrics", "Problem-Value Metrics", "Instrumenting Outcome-based UX Measurements"]},
+      {child:"Your Outcome-Driven UX Metrics Planning Workbook."},
+      {child:"Access to extended resources for developing your UX metrics strategy."},
+      {child:"A private community to get your questions answered by Jared and other members."},
+      {child:"9 months of access to all session recordings, Q&As, and notes (through Nov 6, 2023)."},
     ]
   }
 
@@ -31,8 +35,17 @@ function PlanSelection() {
     seats:185-cart.cart.teammembers,
     buttonText:"Select VIP",
     pillows:[
-      {parent:"ParentTitle", children:["One", "Two", "Three"]},
       {child:"Five 90-minute live sessions with Jared Spool."},
+      {parent:"Ground-breaking concepts behind:", children:["UX Outcomes", "UX Success Metrics", "UX Progress Metrics", "Problem-Value Metrics", "Instrumenting Outcome-based UX Measurements"]},
+      {child:"Your Outcome-Driven UX Metrics Planning Workbook."},
+      {child:"Access to extended resources for developing your UX metrics strategy."},
+      {child:"A private community to get your questions answered by Jared and other members."},
+      {child:"9 months of access to all session recordings, Q&As, and notes (through Nov 6, 2023)."},
+
+      {parent:"Gain confidence with tailored coaching to:", children:["Create your UX Outcomes", "Identify your team’s target metrics.", "Integrate your UX metrics into organizational goals"]},
+      {child:"Three additional 90-minute live sessions. Only for VIP members."},
+      {child:"A 60-minute VIP-only Intensive Prep Coaching session with Dr. Leslie Jensen-Inman."},
+      {child:"An intimate, private community of only VIP members with Jared and Leslie to get the mentoring you need to be successful."},
     ]
   }
 
@@ -55,7 +68,7 @@ function PlanSelection() {
 Can't Ignore " pretitle="Pricing" sendStyle={{ maxWidth: "400px", margin: "0 auto" }} />
       <SliderTeam />
       {/* <Button boring={false} title="Buy" onClick={() => { play() }} /> */}
-      <div className="plans">
+      <div className="plans" id='plans'>
         <Plan planData={PlanDataRegular}  onClick={() => { plan("price_1MLYKjCpotfJBdLxeR976tgu", "REG") }}></Plan>
         <Plan planData={PlanDataVIP}  onClick={() => { plan("price_1MLYMsCpotfJBdLxCNAu52ft","VIP") }}></Plan>
       </div>

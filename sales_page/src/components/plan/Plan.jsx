@@ -50,6 +50,7 @@ function Plan({ planData: { header, description, price, seats, buttonText, pillo
                 </div>
 
                 <div style={{paddingTop:"5px"}} dangerouslySetInnerHTML={{ __html: pillowsToString(pillows) }} />
+            <p className='topbutton'><a href="#plans">box top ↑</a></p>
             </div>
 
         </>
