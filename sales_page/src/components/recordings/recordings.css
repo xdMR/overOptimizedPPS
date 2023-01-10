@@ -1,0 +1,45 @@
+.m__cta{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 20px;
+    margin:10px;
+    border: 3px solid black;
+}
+.m__cta-content p{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+}
+   .m__cta-content h3{
+    margin-top: 10px;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    color:black;
+}
+
+@media screen and (max-width:650px) {
+    .m__cta{
+        flex-direction:column;
+    }
+    .m__cta-btn{
+        margin:2rem 0 0;
+    }
+}
+ @media screen and (max-width:550px) {
+    .m__cta{
+        margin: 4rem 2rem;
+    }
+    .m__cta-content h3{
+       font-size:18px;
+       line-height: 32px;
+    }
+       .m__cta-content button{
+       font-size:14px;
+       line-height: 28px;
+    }
+}
+
+

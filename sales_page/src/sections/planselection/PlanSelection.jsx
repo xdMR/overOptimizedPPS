@@ -1,6 +1,6 @@
 import React, { Children } from 'react'
 
-import { Headline, SliderTeam, Container, Plan } from "../../components";
+import { Headline, SliderTeam, Container, Plan, Recordings } from "../../components";
 import './planselection.css'
 
 import { useContext } from "react";
@@ -54,7 +54,7 @@ function PlanSelection() {
     cart.setCart({
       teammembers:cart.cart.teammembers,
       plan: priceId,
-      gifts: 10
+      gifts: 0
   })
     console.log(cart.cart);
     cart.createOrder(priceId);
@@ -72,6 +72,7 @@ Can't Ignore " pretitle="Pricing" sendStyle={{ maxWidth: "400px", margin: "0 aut
         <Plan planData={PlanDataRegular}  onClick={() => { plan("price_1MLYKjCpotfJBdLxeR976tgu", "REG") }}></Plan>
         <Plan planData={PlanDataVIP}  onClick={() => { plan("price_1MLYMsCpotfJBdLxCNAu52ft","VIP") }}></Plan>
       </div>
+      <Recordings/>
 
     </ Container>
   )
