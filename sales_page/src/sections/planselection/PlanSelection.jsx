@@ -19,8 +19,8 @@ function PlanSelection() {
     seats:25-cart.cart.teammembers,
     buttonText:"Select Regular",
     pillows:[
+      {parent:"ParentTitle", children:["One", "Two", "Three"]},
       {child:"Five 90-minute live sessions with Jared Spool."},
-      {parent:"Parent", children:["One", "Two", "Three"]}
     ]
   }
 
@@ -31,9 +31,8 @@ function PlanSelection() {
     seats:185-cart.cart.teammembers,
     buttonText:"Select VIP",
     pillows:[
-      "Five 90-minute live sessions with Jared Spool.",
-      "Ground-breaking concepts behind:",
-      "Your Outcome-Driven UX Metrics Planning Workbook."
+      {parent:"ParentTitle", children:["One", "Two", "Three"]},
+      {child:"Five 90-minute live sessions with Jared Spool."},
     ]
   }
 

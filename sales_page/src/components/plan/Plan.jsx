@@ -4,6 +4,29 @@ import { Button } from "../../components";
 
 //deconstruction planData={data},onClick={() => { function() }}
 function Plan({ planData: { header, description, price, seats, buttonText, pillows }, onClick }) {
+    function pillowsToString(pillows){
+        // this is type of data we are building into unordered list
+        // pillows:[
+        //     {parent:"Parent Content", children:["One", "Two", "Three"]}
+        //     {child:"This is content for list item that does not have children"},
+        //   ]
+        let str ='';
+        pillows.map(elm=>{
+            if(elm.parent){
+                str+=`<div class="pillow"><ul><li> ${elm.parent} <ul>`;
+                str+=elm.children.reduce(
+                    (accumulator, currentValue) => accumulator + "<li>"+currentValue+"</li>",
+                    ""
+                  )
+                str+="</ul></li></ul></div>";
+            }
+            else{
+                str+='<div class="pillow"><ul><li>'+elm.child+'</li></ul></div>'
+            }
+        })
+        return str
+    }
+
 
     return (
         <>
@@ -19,11 +42,7 @@ function Plan({ planData: { header, description, price, seats, buttonText, pillo
                     <Button boring={false} onClick={onClick} title={buttonText} />
                 </div>
 
-                {/* {pillows.map(elm => {
-                    return <div className="pillow">
-                       {(elm.parent)? elm.parent+ elm.children.map(ch=><li>{ch}</li>):<ul><li>{elm.child}</li></ul>}
-                    </div>
-                })} */}
+                <div style={{paddingTop:"5px"}} dangerouslySetInnerHTML={{ __html: pillowsToString(pillows) }} />
             </div>
 
         </>

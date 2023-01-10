@@ -13,7 +13,7 @@
 .plan h2{
     font-size:22px;
     line-height: 1.5;
-    min-height: 4rem;
+    min-height: 4.2rem;
     padding: 0;
     margin:15px 0;
 }
@@ -24,14 +24,23 @@
 .pillow{
     font-size:14px;
     padding:20px;
-    margin: 5px 0;
+    margin: 2px 0;
     background-color: #ffffff;
 }
 .pillow .h3{
     font-size:18px;
     font-weight: 400;
 }
-
+.pillow ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    padding-inline-start: 20px;
+}
+.pillow ul{
+    color:rgb(123, 123, 131);
+}
 @media screen and (max-width: 650px) {
     .plans{
         flex-direction: column;
