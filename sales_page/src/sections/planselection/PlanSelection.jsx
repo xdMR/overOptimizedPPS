@@ -12,6 +12,30 @@ import { CartContext } from "../../context/CartContext";
 function PlanSelection() {
   const cart = useContext(CartContext);
 
+  const PlanDataRegular={
+    header:"Outcome-Driven UX Metrics Fundamentals Package",
+    description:"Best for teams that want to enhance their learning journey with tailored coaching experience. ",
+    price:447,
+    seats:25,
+    pillows:[
+      "Five 90-minute live sessions with Jared Spool.",
+      "Ground-breaking concepts behind:",
+      "Your Outcome-Driven UX Metrics Planning Workbook."
+    ]
+  }
+
+  const PlanDataVIP={
+    header:"Advanced Concepts VIP Package",
+    description:"Best for teams that want to enhance their learning journey with tailored coaching experience. ",
+    price:647,
+    seats:185,
+    pillows:[
+      "Five 90-minute live sessions with Jared Spool.",
+      "Ground-breaking concepts behind:",
+      "Your Outcome-Driven UX Metrics Planning Workbook."
+    ]
+  }
+
   const plan = (priceId, planName) => {
     console.log(`This is ${planName}`)
     cart.setCart({
@@ -32,8 +56,8 @@ Can't Ignore " pretitle="Pricing" sendStyle={{ maxWidth: "400px", margin: "0 aut
       <SliderTeam />
       {/* <Button boring={false} title="Buy" onClick={() => { play() }} /> */}
       <div className="plans" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <Plan header="Regular Plan"  onClick={() => { plan("price_1MLYKjCpotfJBdLxeR976tgu", "REG") }}></Plan>
-        <Plan header="VIP Plan"  onClick={() => { plan("price_1MLYMsCpotfJBdLxCNAu52ft","VIP") }}></Plan>
+        <Plan planData={PlanDataRegular}  onClick={() => { plan("price_1MLYKjCpotfJBdLxeR976tgu", "REG") }}></Plan>
+        <Plan planData={PlanDataVIP}  onClick={() => { plan("price_1MLYMsCpotfJBdLxCNAu52ft","VIP") }}></Plan>
       </div>
 
     </ Container>
