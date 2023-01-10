@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState,useRef } from "react";
 
 
 export const CartContext = createContext({
@@ -16,25 +16,27 @@ export const CartContext = createContext({
 export function CartProvider({ children }) {
     const [cart, setCart] = useState({
         teammembers:2,
-        plan: "price_1MLYMsCpotfJBdLxCNAu52ft",
+        plan: "no plan",
         gifts:0
     });
-    const [order, setOrder] =useState([]);
+    const order = useRef([]);
 
 
-    function createOrder(){
-       setOrder({id: cart.plan, "quantity": cart.teammembers})
-       if(cart.gifts>0){
-        setOrder(...order,{ id:"price_1MLYKjCpotfJBdLxeR976tgu", quantity:cart.gifts
-        })
-       }
+    function createOrder(priceId){
+       order.current=[{id: priceId, quantity: cart.teammembers}];
+      //  if(cart.gifts>0){
+      //   setOrder([...order,{id:}])
+      //  }
+
        const checkout = async () => {
+        console.log("Order",order.current);
         await fetch("http://localhost:4000/checkout", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ items: order }),
+
+          body: JSON.stringify({ items: order.current }),
         })
           .then((response) => {
             return response.json();
