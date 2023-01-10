@@ -57,19 +57,12 @@ function App() {
           </Routes>
         </BrowserRouter>
         </CartProvider>
-
-
-
-
-        <Cart />
-
-        <SelectPackage />
-        <button
+          {/* <button
           onClick={handleClick}
           style={{ fontSize: "22px", padding: "5px" }}
         >
           Start Checkout
-        </button>
+        </button> */}
       </header>
     </div>
   );
