@@ -11,6 +11,11 @@ function PlanSelection() {
   const cart = useContext(CartContext);
   const play = () => {
     console.log("this")
+    cart.setCart({
+      teammembers:cart.cart.teammembers,
+      plan: cart.cart.plan,
+      gifts: 10
+  })
   }
 
   return (
@@ -21,8 +26,8 @@ Can't Ignore " pretitle="Pricing" sendStyle={{ maxWidth: "400px", margin: "0 aut
       <SliderTeam />
       <Button boring={false} title="Buy" onClick={() => { play() }} />
       <div className="plans" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <Plan></Plan>
-        <Plan></Plan>
+        <Plan priceId={"price_1MLYKjCpotfJBdLxeR976tgu"} ></Plan>
+        <Plan priceId={"price_1MLYMsCpotfJBdLxCNAu52ft"} ></Plan>
       </div>
 
     </ Container>

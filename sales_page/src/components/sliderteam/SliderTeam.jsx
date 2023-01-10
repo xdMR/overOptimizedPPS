@@ -41,8 +41,8 @@ function SliderTeam() {
             setSliderValue(value);
              cart.setCart({
               teammembers:value,
-              plan: "price_1MLYMsCpotfJBdLxCNAu52ft",
-              gifts:0
+              plan: cart.cart.plan,
+              gifts: cart.cart.gifts
           })
           }}
         />
