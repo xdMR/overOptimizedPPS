@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Children } from 'react'
 
 import { Headline, SliderTeam, Container, Plan } from "../../components";
 import './planselection.css'
@@ -15,20 +15,21 @@ function PlanSelection() {
   const PlanDataRegular={
     header:"Outcome-Driven UX Metrics Fundamentals Package",
     description:"Best for teams that want to enhance their learning journey with tailored coaching experience. ",
-    price:447,
-    seats:25,
+    price:(cart.cart.teammembers>1)?397:447,
+    seats:25-cart.cart.teammembers,
+    buttonText:"Select Regular",
     pillows:[
-      "Five 90-minute live sessions with Jared Spool.",
-      "Ground-breaking concepts behind:",
-      "Your Outcome-Driven UX Metrics Planning Workbook."
+      {child:"Five 90-minute live sessions with Jared Spool."},
+      {parent:"Parent", children:["One", "Two", "Three"]}
     ]
   }
 
   const PlanDataVIP={
     header:"Advanced Concepts VIP Package",
     description:"Best for teams that want to enhance their learning journey with tailored coaching experience. ",
-    price:647,
-    seats:185,
+    price:(cart.cart.teammembers>1)?597:647,
+    seats:185-cart.cart.teammembers,
+    buttonText:"Select VIP",
     pillows:[
       "Five 90-minute live sessions with Jared Spool.",
       "Ground-breaking concepts behind:",
@@ -55,7 +56,7 @@ function PlanSelection() {
 Can't Ignore " pretitle="Pricing" sendStyle={{ maxWidth: "400px", margin: "0 auto" }} />
       <SliderTeam />
       {/* <Button boring={false} title="Buy" onClick={() => { play() }} /> */}
-      <div className="plans" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <div className="plans">
         <Plan planData={PlanDataRegular}  onClick={() => { plan("price_1MLYKjCpotfJBdLxeR976tgu", "REG") }}></Plan>
         <Plan planData={PlanDataVIP}  onClick={() => { plan("price_1MLYMsCpotfJBdLxCNAu52ft","VIP") }}></Plan>
       </div>

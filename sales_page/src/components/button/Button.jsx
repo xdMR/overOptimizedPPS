@@ -15,7 +15,7 @@ function Button(props) {
     }
   return (
     //onClick those not work because user can clickDown and never let go, in that case class will not be added
-    <button onClick={props.onClick} onMouseDown={()=>handleClick()} className={`${props.boring ? "btn-boring":"btn"} ${cclass}`}>{props.title}</button>
+    <button style={{maxWidth:"none", width:"100%"}} onClick={props.onClick} onMouseDown={()=>handleClick()} className={`${props.boring ? "btn-boring":"btn"} ${cclass}`}>{props.title}</button>
   )
 }
 

@@ -37,6 +37,7 @@
     animation: addColor 0.5s 1;
     /* forwards is needed so that animation stays on the last frame (that text stays white and not black) */
     animation-fill-mode: forwards;
+
 }
 
 @keyframes addColor
