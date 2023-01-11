@@ -6,7 +6,7 @@ import CompareButtons from "./sections/CompareButtons/CompareButtons";
 import CartProvider from './context/CartContext';
 
 
-import { BrowserRouter, Routes, Route, Outlet, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet, Link,useNavigate } from "react-router-dom";
 
 function App() {
 
@@ -51,6 +51,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route index element={<PlanSelection />} />
+            <Route path="selectteam" element={<TeamSelection />} />
             <Route path="success" element={<Success />} />
             <Route path="cancel" element={<Cancel />} />
             <Route path="buttons" element={<CompareButtons />} />

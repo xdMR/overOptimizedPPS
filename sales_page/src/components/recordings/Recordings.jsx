@@ -8,9 +8,10 @@ import { useContext } from "react";
 function Recordings() {
     const cart = useContext(CartContext);
 
-    const plan2 = (priceId, planName) => {
+    const plan2 = (priceId, planName, members) => {
         console.log(`This is ${planName}`)
         console.log(cart.cart);
+        cart.cart.teammembers=1;
         cart.createOrder(priceId);
       }
 
@@ -25,7 +26,7 @@ and notes (through Nov 6, 2023).</p>
 
     </div>
     <div class="m__cta-btn">
-    <Button boring={false} onClick={()=>{plan2("price_1MLYMsCpotfJBdLxCNAu52ft","VIP")}} title="Buy Recording Access" />
+    <Button boring={false} onClick={()=>{plan2("price_1MOueTCpotfJBdLx6CAptVdz","Recordings",1)}} title="Buy Recording Access" />
     </div>
 </div>
   )

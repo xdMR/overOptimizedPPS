@@ -1,4 +1,6 @@
 import React, { Children } from 'react'
+import { BrowserRouter, Routes, Route, Outlet, Link, useNavigate } from "react-router-dom";
+
 
 import { Headline, SliderTeam, Container, Plan, Recordings } from "../../components";
 import './planselection.css'
@@ -11,6 +13,8 @@ import { CartContext } from "../../context/CartContext";
 
 function PlanSelection() {
   const cart = useContext(CartContext);
+  const navigate = useNavigate();
+
 
   const PlanDataRegular={
     header:"Outcome-Driven UX Metrics Fundamentals Package",
@@ -49,15 +53,16 @@ function PlanSelection() {
     ]
   }
 
-  const plan = (priceId, planName) => {
+  const plan = (priceId, planName, members) => {
     console.log(`This is ${planName}`)
     cart.setCart({
-      teammembers:cart.cart.teammembers,
+      teammembers:members,
       plan: priceId,
       gifts: 0
   })
     console.log(cart.cart);
-    cart.createOrder(priceId);
+    navigate("/selectteam");
+     //cart.createOrder(priceId);
   }
 
 
@@ -69,8 +74,8 @@ Can't Ignore " pretitle="Pricing" sendStyle={{ maxWidth: "400px", margin: "0 aut
       <SliderTeam />
       {/* <Button boring={false} title="Buy" onClick={() => { play() }} /> */}
       <div className="plans" id='plans'>
-        <Plan planData={PlanDataRegular}  onClick={() => { plan("price_1MLYKjCpotfJBdLxeR976tgu", "REG") }}></Plan>
-        <Plan planData={PlanDataVIP}  onClick={() => { plan("price_1MLYMsCpotfJBdLxCNAu52ft","VIP") }}></Plan>
+        <Plan planData={PlanDataRegular}  onClick={() => { plan("price_1MLYKjCpotfJBdLxeR976tgu", "REG", cart.cart.teammembers) }}></Plan>
+        <Plan planData={PlanDataVIP}  onClick={() => { plan("price_1MLYMsCpotfJBdLxCNAu52ft","VIP",cart.cart.teammembers ) }}></Plan>
       </div>
       <Recordings/>
 
