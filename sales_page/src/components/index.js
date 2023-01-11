@@ -5,5 +5,7 @@ export {default as Headline} from './headline/Headline';
 export {default as Button} from './button/Button';
 export {default as Container} from './Container';
 export {default as Plan} from './plan/Plan';
+export {default as MemberList} from './memberlist/MemberList';
 export {default as Recordings} from './recordings/Recordings';
+
 
