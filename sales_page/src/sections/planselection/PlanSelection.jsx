@@ -68,7 +68,6 @@ function PlanSelection() {
 
   return (
     <Container>
-      <button onClick={() => { console.log(cart.cart) }}>Show CArt</button>
       <Headline title="UX Metrics Your Stakeholders
 Can't Ignore " pretitle="Pricing" sendStyle={{ maxWidth: "400px", margin: "0 auto" }} />
       <SliderTeam />
@@ -77,6 +76,8 @@ Can't Ignore " pretitle="Pricing" sendStyle={{ maxWidth: "400px", margin: "0 aut
         <Plan planData={PlanDataRegular}  onClick={() => { plan("price_1MLYKjCpotfJBdLxeR976tgu", "REG", cart.cart.teammembers) }}></Plan>
         <Plan planData={PlanDataVIP}  onClick={() => { plan("price_1MLYMsCpotfJBdLxCNAu52ft","VIP",cart.cart.teammembers ) }}></Plan>
       </div>
+
+
       <Recordings/>
 
     </ Container>
