@@ -61,7 +61,10 @@ function PlanSelection() {
       gifts: 0
   })
     console.log(cart.cart);
-    navigate("/selectteam");
+    setTimeout(() => {
+      navigate("/selectteam");
+    }, 250)
+
      //cart.createOrder(priceId);
   }
 
@@ -77,9 +80,7 @@ Can't Ignore " pretitle="Pricing" sendStyle={{ maxWidth: "400px", margin: "0 aut
         <Plan planData={PlanDataVIP}  onClick={() => { plan("price_1MLYMsCpotfJBdLxCNAu52ft","VIP",cart.cart.teammembers ) }}></Plan>
       </div>
 
-
       <Recordings/>
-
     </ Container>
   )
 }
