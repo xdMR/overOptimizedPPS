@@ -1,6 +1,6 @@
 import * as React from "react";
 import "./Core.css";
-import { Cart, Headline, SliderTeam, SelectPackage, Button } from "./components";
+import { Cart, Headline, SliderTeam, SelectPackage, Button, MemberList } from "./components";
 import { Cancel, Success, TeamSelection, PlanSelection } from "./sections";
 import CompareButtons from "./sections/CompareButtons/CompareButtons";
 import CartProvider from './context/CartContext';
@@ -52,6 +52,7 @@ function App() {
           <Routes>
             <Route index element={<PlanSelection />} />
             <Route path="selectteam" element={<TeamSelection />} />
+            <Route path="memberlist" element={<MemberList />} />
             <Route path="success" element={<Success />} />
             <Route path="cancel" element={<Cancel />} />
             <Route path="buttons" element={<CompareButtons />} />

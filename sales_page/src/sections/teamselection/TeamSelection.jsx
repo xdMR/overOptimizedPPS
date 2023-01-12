@@ -1,11 +1,14 @@
 import React from 'react'
 import './teamselection.css'
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 import { Headline, SliderTeam, Container, Plan, Recordings } from "../../components";
+import { Formik, Form, Field, FieldArray } from 'formik';
+
 
 function Teamselection() {
   const cart = useContext(CartContext);
+  const [membnumber, setMembnumber] = useState(cart.cart.teammembers);
 
   const plan = (priceId, planName, members) => {
     console.log(`This is ${planName}`)
@@ -18,6 +21,10 @@ function Teamselection() {
     //cart.createOrder(priceId);
   }
 
+  let sviclanovi = [];
+  for (let index = 0; index < membnumber; index++) {
+    sviclanovi[index] = "";
+  }
   return (
     <Container>
       <div>package:{cart.cart.plan} members:{cart.cart.teammembers}</div>
@@ -25,18 +32,81 @@ function Teamselection() {
       <Headline title="Let's Add Your Team Members" pretitle="Team Assignment & Checkout" sendStyle={{ maxWidth: "450px", margin: "0 auto" }} />
 
       <div className="membersNumber">
-      {(cart.cart.teammembers > 1) ?
+        {(membnumber > 1) ?
           <> <TeamIcon /> <span style={{ fontSize: "32px", position: "relative", bottom: "-3px" }}>
-            {cart.cart.teammembers}
+            {membnumber}
           </span>  <span style={{ fontSize: "22px", position: "relative", bottom: "0px", fontWeight: "700" }}>
               Members
             </span>  </> : <> <IndividualIcon /> <span style={{ fontSize: "22px", position: "relative", bottom: "0px", fontWeight: "700" }}>
-            <span style={{ fontSize: "32px", position: "relative", bottom: "-3px" }}>
-            {cart.cart.teammembers}
-          </span> Member
+              <span style={{ fontSize: "32px", position: "relative", bottom: "-3px" }}>
+                {membnumber}
+              </span> Member
             </span> </>}
-
       </div>
+
+
+     <div className="formfields">
+     <Formik
+        initialValues={{ listmembers: sviclanovi }}
+        onSubmit={values =>
+          setTimeout(() => {
+            alert(JSON.stringify(values, null, 2));
+          }, 500)
+        }
+        render={({ values }) => (
+          <Form>
+            <FieldArray
+              name="listmembers"
+              render={arrayHelpers => (
+                <div>
+                  {membnumber > 0 ? (
+                    values.listmembers.map((firstvalue, index) => (
+                      <div key={index} className="formGroup">
+                        <div className="fullname">
+                        <label htmlFor="name">Full Name</label>
+                        <Field name={`members.${index}`} />
+                        </div>
+
+                        <div className="emailaddress">
+                          <label htmlFor="email">Email Address</label>
+                        <Field type="email" name={`emails.${index}`} required />
+                        </div>
+
+
+                        <button
+                          type="button"
+                          onClick={() => {
+                            arrayHelpers.remove(index);
+                            setMembnumber(membnumber - 1)
+                          }} // remove a seat from the list
+                        >
+                          Remove seat
+                        </button>
+                      </div>
+                    ))
+                  ) : ""}
+
+                  <button type="button" onClick={() => {
+                    arrayHelpers.push(''
+                    );
+                    setMembnumber(membnumber + 1)
+                  }
+                  }>
+
+
+                    {/* show this when user has removed all friends from the list */}
+                    Add a teammate
+                  </button>
+                  <div>
+                    <button type="submit">Submit</button>
+                  </div>
+                </div>
+              )}
+            />
+          </Form>
+        )}
+      />
+     </div>
 
     </Container>
   )
