@@ -40,8 +40,6 @@ export const MemberList = () => (
                 ) : ""}
 
 <button type="button" onClick={() => arrayHelpers.push('')}>
-
-
                     {/* show this when user has removed all friends from the list */}
                     Add a teammate
                   </button>

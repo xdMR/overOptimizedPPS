@@ -2,7 +2,7 @@ import React from 'react'
 import './teamselection.css'
 import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
-import { Headline, SliderTeam, Container, Plan, Recordings } from "../../components";
+import { Headline, SliderTeam, Container, Plan, Recordings, Button} from "../../components";
 import { Formik, Form, Field, FieldArray } from 'formik';
 
 
@@ -59,12 +59,13 @@ function Teamselection() {
               name="listmembers"
               render={arrayHelpers => (
                 <div>
-                  {membnumber > 0 ? (
-                    values.listmembers.map((firstvalue, index) => (
+                  {values.listmembers && values.listmembers.length  > 0 ? (
+                    values.listmembers.map((friend, index) => (
                       <div key={index} className="formGroup">
+                         <IndividualIcon />
                         <div className="fullname">
                         <label htmlFor="name">Full Name</label>
-                        <Field name={`members.${index}`} />
+                        <Field name={`friends.${index}`} />
                         </div>
 
                         <div className="emailaddress">
@@ -73,31 +74,33 @@ function Teamselection() {
                         </div>
 
 
+
                         <button
-                          type="button"
+                          type="button" className='removeSeatButton'
                           onClick={() => {
-                            arrayHelpers.remove(index);
-                            setMembnumber(membnumber - 1)
+                            setMembnumber(membnumber - 1);
+                            return arrayHelpers.remove(index);
                           }} // remove a seat from the list
-                        >
-                          Remove seat
+                        >remove
                         </button>
                       </div>
                     ))
                   ) : ""}
 
-                  <button type="button" onClick={() => {
+                  <div className='formGroup'>
+
+           <button type="button" className='addTeammate' onClick={() => {
                     arrayHelpers.push(''
                     );
                     setMembnumber(membnumber + 1)
                   }
                   }>
-
-
-                    {/* show this when user has removed all friends from the list */}
                     Add a teammate
                   </button>
-                  <div>
+                  </div>
+
+
+                  <div className='formGroup'>
                     <button type="submit">Submit</button>
                   </div>
                 </div>
