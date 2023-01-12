@@ -27,8 +27,6 @@ function Teamselection() {
   }
   return (
     <Container>
-      <div>package:{cart.cart.plan} members:{cart.cart.teammembers}</div>
-
       <Headline title="Let's Add Your Team Members" pretitle="Team Assignment & Checkout" sendStyle={{ maxWidth: "450px", margin: "0 auto" }} />
 
       <div className="membersNumber">
@@ -37,7 +35,7 @@ function Teamselection() {
             {membnumber}
           </span>  <span style={{ fontSize: "22px", position: "relative", bottom: "0px", fontWeight: "700" }}>
               Members
-            </span>  </> : <> <IndividualIcon /> <span style={{ fontSize: "22px", position: "relative", bottom: "0px", fontWeight: "700" }}>
+            </span>  </> : <> <IndividualIcon /> <span style={{ fontSize: "22px", position: "relative", bottom: "0px", fontWeight: "700", flexGrow:"1" }}>
               <span style={{ fontSize: "32px", position: "relative", bottom: "-3px" }}>
                 {membnumber}
               </span> Member
@@ -73,8 +71,6 @@ function Teamselection() {
                           <Field type="email" name={`emails.${index}`} required/>
                         </div>
 
-
-
                         <button
                           type="button" className='removeSeatButton'
                           onClick={() => {
@@ -100,8 +96,22 @@ function Teamselection() {
                   </div>
 
 
-                  <div className='formGroup'>
-                    <button type="submit">Submit</button>
+
+
+                  <div className='payingNow'>
+                  <div className="description">
+                    <h2 className='total'>Your Total for {membnumber} {membnumber>1?"seats":"seat"} with {(cart.cart.plan==="price_1MLYKjCpotfJBdLxeR976tgu")?"Fundamentals":"VIP"} package is:</h2>
+                    <h1 className='price'>
+                      {/* {if members>1 use team pricing and then decide whether to go with Regular or Vip pricing} */}
+                      ${(membnumber>1)? (cart.cart.plan==="price_1MLYKjCpotfJBdLxeR976tgu")?membnumber*397:membnumber*597:(cart.cart.plan==="price_1MLYKjCpotfJBdLxeR976tgu")?membnumber*447:membnumber*647}
+                      </h1>
+
+                    <span>(${(membnumber>1)? (cart.cart.plan==="price_1MLYKjCpotfJBdLxeR976tgu")?397:597:(cart.cart.plan==="price_1MLYKjCpotfJBdLxeR976tgu")?447:647} per person)</span>
+
+                    </div>
+                    <div className="pay">
+                    <Button title="Pay >" type="submit"/>
+                    </div>
                   </div>
                 </div>
               )}

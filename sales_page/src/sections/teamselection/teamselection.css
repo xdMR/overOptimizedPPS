@@ -24,6 +24,8 @@
     padding: 5px;
     margin:5px;
     font-size:22px;
+    width: 95%;
+
 }
 
 
@@ -32,6 +34,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     align-content: flex-start;
+    flex-grow: 4;
   }
 
   .removeSeatButton{
@@ -43,6 +46,7 @@
     border:none;
     padding: 8px 16px;
     margin-left:10px;
+    flex-grow: 1;
   }
   .removeSeatButton:hover{
     background-color: rgb(35, 35, 35);
@@ -62,6 +66,9 @@
     .formGroup{
         justify-content: start;
     }
+    .removeSeatButton{
+      flex-grow: 0;
+    }
   }
 
   .addTeammate{
@@ -76,6 +83,7 @@
     color: white;;
     border-radius: 40px;
     margin-right: 10px;
+    line-height: 2;
     width: 33px;
     height: 32px;
     display: inline-flex;
@@ -83,4 +91,53 @@
     align-items: center;
   }
   .addTeammate:hover{
- font-weight: 600; }
+ transform: scale(1.1); }
+
+
+ .payingNow{
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(232, 231, 236);
+  padding:15px;
+  border: 3px solid black;
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  margin-top: 30px;
+ }
+ .payingNow .description{
+  flex-basis: 60%;
+ }
+ .payingNow .pay{
+  flex-basis: 40%;
+ }
+ .payingNow h2, .payingNow h1{
+  margin: 0;
+  padding: 0;
+ }
+ @media only screen and (max-width: 768px) {
+  .payingNow{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .payingNow .pay{
+    margin-top:30px;
+    margin-right:20px;
+    text-align: left;
+    display: flex;
+    align-items: flex-end;
+    justify-items: end;
+    align-items: flex-end;
+  }
+ }
+
+ .payingNow .description .total{
+  font-size: 18px;
+  max-width: 300px;
+ }
+
+ .payingNow .description .price{
+  margin-top:20px;
+  font-size: 40px;
+  margin-bottom: 5px;
+ }
