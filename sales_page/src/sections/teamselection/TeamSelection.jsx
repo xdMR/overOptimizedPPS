@@ -10,15 +10,14 @@ function Teamselection() {
   const cart = useContext(CartContext);
   const [membnumber, setMembnumber] = useState(cart.cart.teammembers);
 
-  const plan = (priceId, planName, members) => {
-    console.log(`This is ${planName}`)
+  const pay = (number, priceId) => {
     cart.setCart({
-      teammembers: members,
+      teammembers: number,
       plan: priceId,
       gifts: 0
     })
     console.log(cart.cart);
-    //cart.createOrder(priceId);
+    cart.createOrder(priceId);
   }
 
   let sviclanovi = [];
@@ -48,7 +47,10 @@ function Teamselection() {
         initialValues={{ listmembers: sviclanovi }}
         onSubmit={values =>
           setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
+            //alert(JSON.stringify(values, null, 2));
+          console.log("submit:buying");
+          pay(membnumber, cart.cart.plan);
+          console.log((JSON.stringify(values, null, 2)));
           }, 500)
         }
         render={({ values }) => (
