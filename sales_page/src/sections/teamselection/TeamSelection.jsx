@@ -65,12 +65,12 @@ function Teamselection() {
                          <IndividualIcon />
                         <div className="fullname">
                         <label htmlFor="name">Full Name</label>
-                        <Field name={`friends.${index}`} />
+                        <Field name={`listmembers.${index}`} />
                         </div>
 
                         <div className="emailaddress">
                           <label htmlFor="email">Email Address</label>
-                        <Field type="email" name={`emails.${index}`} required />
+                          <Field type="email" name={`emails.${index}`} required/>
                         </div>
 
 
