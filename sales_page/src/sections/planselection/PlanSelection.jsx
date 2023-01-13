@@ -10,11 +10,9 @@ import { CartContext } from "../../context/CartContext";
 
 
 
-
 function PlanSelection() {
   const cart = useContext(CartContext);
   const navigate = useNavigate();
-
 
   const PlanDataRegular={
     header:"Outcome-Driven UX Metrics Fundamentals Package",
@@ -31,7 +29,6 @@ function PlanSelection() {
       {child:"9 months of access to all session recordings, Q&As, and notes (through Nov 6, 2023)."},
     ]
   }
-
   const PlanDataVIP={
     header:"Advanced Concepts VIP Package",
     description:"Best for teams that want to enhance their learning journey with tailored coaching experience. ",
@@ -53,18 +50,18 @@ function PlanSelection() {
     ]
   }
 
-  const plan = (priceId, planName, members) => {
+  const selectPlan = (priceId, planName, members) => {
     console.log(`This is ${planName}`)
     cart.setCart({
       teammembers:members,
+      package: planName,
       plan: priceId,
       gifts: 0
   })
-    console.log(cart.cart);
+    // console.log(cart.cart);
     setTimeout(() => {
       navigate("/selectteam");
     }, 250)
-
      //cart.createOrder(priceId);
   }
 
@@ -74,12 +71,10 @@ function PlanSelection() {
       <Headline title="UX Metrics Your Stakeholders
 Can't Ignore " pretitle="Pricing" sendStyle={{ maxWidth: "400px", margin: "0 auto" }} />
       <SliderTeam />
-      {/* <Button boring={false} title="Buy" onClick={() => { play() }} /> */}
       <div className="plans" id='plans'>
-        <Plan planData={PlanDataRegular}  onClick={() => { plan("price_1MLYKjCpotfJBdLxeR976tgu", "REG", cart.cart.teammembers) }}></Plan>
-        <Plan planData={PlanDataVIP}  onClick={() => { plan("price_1MLYMsCpotfJBdLxCNAu52ft","VIP",cart.cart.teammembers ) }}></Plan>
+        <Plan planData={PlanDataRegular}  onClick={() => { selectPlan("price_1MLYKjCpotfJBdLxeR976tgu", "REG", cart.cart.teammembers) }}></Plan>
+        <Plan planData={PlanDataVIP}  onClick={() => { selectPlan("price_1MLYMsCpotfJBdLxCNAu52ft","VIP",cart.cart.teammembers ) }}></Plan>
       </div>
-
       <Recordings/>
     </ Container>
   )

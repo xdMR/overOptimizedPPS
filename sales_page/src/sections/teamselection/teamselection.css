@@ -142,14 +142,17 @@
   margin-bottom: 5px;
  }
 
- .goBack{
-  display: flex;
+
+ .goBackWrapper{
   max-width: 700px;
+  margin:0 auto;
+ }
+ .goBack{
+  display: inline-flex;
   margin: 0 auto;
   position: relative;
   left: 0px;
   transition: all 200ms ease-in;
-
  }
  .goBack:hover{
   position: relative;

@@ -1,26 +1,37 @@
 import React from 'react'
 import './teamselection.css'
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { CartContext } from "../../context/CartContext";
-import { Headline, SliderTeam, Container, Plan, Recordings, Button} from "../../components";
+import { Headline, SliderTeam, Container, Plan, Recordings, Button } from "../../components";
 import { Formik, Form, Field, FieldArray } from 'formik';
 import { useNavigate } from "react-router-dom";
-
 
 
 function Teamselection() {
   const cart = useContext(CartContext);
   const navigate = useNavigate();
+
   const [membnumber, setMembnumber] = useState(cart.cart.teammembers);
 
-  const pay = (number, priceId) => {
+  const pay = (number, plan) => {
     cart.setCart({
       teammembers: number,
-      plan: priceId,
+      plan: determinePriceId(number),
+      package: cart.cart.package,
       gifts: 0
     })
-    console.log(cart.cart);
-    cart.createOrder(priceId);
+    //console.log(cart.cart);
+    cart.createOrder(determinePriceId(number), membnumber);
+  }
+
+  const determinePriceId = () =>{
+    // the same script should run on backend to check that priceIds have not been altered manualy
+    if(cart.cart.package==="REG"){
+      return((membnumber<2)?"price_1MPc1sCpotfJBdLx0vwQZaPO":"price_1MPc1OCpotfJBdLxCLcPtj2a");
+    }
+    if(cart.cart.package==="VIP"){
+      return ((membnumber<2)?"price_1MPc33CpotfJBdLx8W2AFDgp":"price_1MPc2jCpotfJBdLx8IsCeIID");
+    }
   }
 
   let sviclanovi = [];
@@ -37,7 +48,7 @@ function Teamselection() {
             {membnumber}
           </span>  <span style={{ fontSize: "22px", position: "relative", bottom: "0px", fontWeight: "700" }}>
               Members
-            </span>  </> : <> <IndividualIcon /> <span style={{ fontSize: "22px", position: "relative", bottom: "0px", fontWeight: "700", flexGrow:"1" }}>
+            </span>  </> : <> <IndividualIcon /> <span style={{ fontSize: "22px", position: "relative", bottom: "0px", fontWeight: "700", flexGrow: "1" }}>
               <span style={{ fontSize: "32px", position: "relative", bottom: "-3px" }}>
                 {membnumber}
               </span> Member
@@ -45,91 +56,92 @@ function Teamselection() {
       </div>
 
 
-     <div className="formfields">
-     <Formik
-        initialValues={{ listmembers: sviclanovi }}
-        onSubmit={values =>
-          setTimeout(() => {
-            //alert(JSON.stringify(values, null, 2));
-          console.log("submit:buying");
-          pay(membnumber, cart.cart.plan);
-          console.log((JSON.stringify(values, null, 2)));
-          }, 300)
-        }
-        render={({ values }) => (
-          <Form>
-            <FieldArray
-              name="listmembers"
-              render={arrayHelpers => (
-                <div>
-                  {values.listmembers && values.listmembers.length  > 0 ? (
-                    values.listmembers.map((friend, index) => (
-                      <div key={index} className="formGroup">
-                         <IndividualIcon />
-                        <div className="fullname">
-                        <label htmlFor="name">Full Name</label>
-                        <Field name={`listmembers.${index}`} />
-                        </div>
+      <div className="formfields">
+        <Formik
+          initialValues={{ listmembers: sviclanovi }}
+          onSubmit={values =>
+            setTimeout(() => {
+              //alert(JSON.stringify(values, null, 2));
+              console.log("submit:buying");
+              pay(membnumber, cart.cart.plan);
+              console.log((JSON.stringify(values, null, 2)));
+            }, 300)
+          }
+          render={({ values }) => (
+            <Form>
+              <FieldArray
+                name="listmembers"
+                render={arrayHelpers => (
+                  <div>
+                    {values.listmembers && values.listmembers.length > 0 ? (
+                      values.listmembers.map((friend, index) => (
+                        <div key={index} className="formGroup">
+                          <IndividualIcon />
+                          <div className="fullname">
+                            <label htmlFor="name">Full Name</label>
+                            <Field name={`listmembers.${index}`} />
+                          </div>
 
-                        <div className="emailaddress">
-                          <label htmlFor="email">Email Address</label>
-                          <Field type="email" name={`emails.${index}`} required/>
-                        </div>
+                          <div className="emailaddress">
+                            <label htmlFor="email">Email Address</label>
+                            <Field type="email" name={`emails.${index}`} required />
+                          </div>
 
-                        <button
-                          type="button" className='removeSeatButton'
-                          onClick={() => {
-                            setMembnumber(membnumber - 1);
-                            return arrayHelpers.remove(index);
-                          }} // remove a seat from the list
-                        >remove
-                        </button>
+                          <button
+                            type="button" className='removeSeatButton'
+                            onClick={() => {
+                              setMembnumber(membnumber - 1);
+                              return arrayHelpers.remove(index);
+                            }} // remove a seat from the list
+                          >remove
+                          </button>
+                        </div>
+                      ))
+                    ) : ""}
+
+                    <div className='formGroup'>
+
+                      <button type="button" className='addTeammate' onClick={() => {
+                        arrayHelpers.push(''
+                        );
+                        setMembnumber(membnumber + 1)
+                      }
+                      }>
+                        Add a teammate
+                      </button>
+                    </div>
+
+
+                    <Container> <div className="goBackWrapper">
+                      <div className="goBack" onClick={() => { navigate("/") }}>
+                        <div className="icon"><svg width="25" height="28" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M5 5L1 9L5 13M1 9H12C13.0609 9 14.0783 8.57857 14.8284 7.82843C15.5786 7.07828 16 6.06087 16 5C16 3.93913 15.5786 2.92172 14.8284 2.17157C14.0783 1.42143 13.0609 1 12 1H11" stroke="black" strokeWidth="2" strokeLinecap="round" strokeLinecap="round" />
+                        </svg>
+                        </div>           <div className="text"> Back To Choosing Your Package</div>
+                      </div></div></Container>
+
+                    <div className='payingNow'>
+                      <div className="description">
+                        <h2 className='total'>Your Total for {membnumber} {membnumber > 1 ? "seats" : "seat"} with {(cart.cart.package === "REG") ? "Fundamentals" : "VIP"} package is:</h2>
+                        <h1 className='price'>
+                          {/* {if members>1 use team pricing and then decide whether to go with Regular or Vip pricing} */}
+                          ${(membnumber > 1) ? (cart.cart.package === "REG") ? membnumber * 397 : membnumber * 597 : (cart.cart.package === "REG") ? membnumber * 447 : membnumber * 647}
+                        </h1>
+
+                        <span>(${(membnumber > 1) ? (cart.cart.package === "REG") ? 397 : 597 : (cart.cart.package === "REG") ? 447 : 647} per person)</span>
+
                       </div>
-                    ))
-                  ) : ""}
-
-                  <div className='formGroup'>
-
-           <button type="button" className='addTeammate' onClick={() => {
-                    arrayHelpers.push(''
-                    );
-                    setMembnumber(membnumber + 1)
-                  }
-                  }>
-                    Add a teammate
-                  </button>
-                  </div>
-
-
-                 <Container> <div className="goBack" onClick={()=>{navigate("/")}}>
-                    <div className="icon"><svg width="25" height="28" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M5 5L1 9L5 13M1 9H12C13.0609 9 14.0783 8.57857 14.8284 7.82843C15.5786 7.07828 16 6.06087 16 5C16 3.93913 15.5786 2.92172 14.8284 2.17157C14.0783 1.42143 13.0609 1 12 1H11" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-</div>           <div className="text"> Back To Choosing Your Package</div>
-                  </div></Container>
-
-                  <div className='payingNow'>
-                  <div className="description">
-                    <h2 className='total'>Your Total for {membnumber} {membnumber>1?"seats":"seat"} with {(cart.cart.plan==="price_1MLYKjCpotfJBdLxeR976tgu")?"Fundamentals":"VIP"} package is:</h2>
-                    <h1 className='price'>
-                      {/* {if members>1 use team pricing and then decide whether to go with Regular or Vip pricing} */}
-                      ${(membnumber>1)? (cart.cart.plan==="price_1MLYKjCpotfJBdLxeR976tgu")?membnumber*397:membnumber*597:(cart.cart.plan==="price_1MLYKjCpotfJBdLxeR976tgu")?membnumber*447:membnumber*647}
-                      </h1>
-
-                    <span>(${(membnumber>1)? (cart.cart.plan==="price_1MLYKjCpotfJBdLxeR976tgu")?397:597:(cart.cart.plan==="price_1MLYKjCpotfJBdLxeR976tgu")?447:647} per person)</span>
-
-                    </div>
-                    <div className="pay">
-                    <Button title="Pay >" type="submit"/>
+                      <div className="pay">
+                        <Button title="Pay >" type="submit" />
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
-            />
-          </Form>
-        )}
-      />
-     </div>
+                )}
+              />
+            </Form>
+          )}
+        />
+      </div>
 
     </Container>
   )

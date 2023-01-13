@@ -12,18 +12,17 @@ export const CartContext = createContext({
     // setTeammembers:()=>{}
 });
 
-
 export function CartProvider({ children }) {
     const [cart, setCart] = useState({
         teammembers:2,
         plan: "no plan",
+        package:"REG",
         gifts:0
     });
     const order = useRef([]);
 
-
-    function createOrder(priceId){
-       order.current=[{id: priceId, quantity: cart.teammembers}];
+    function createOrder(priceId, quantity){
+       order.current=[{id: priceId, quantity: quantity}];
       //  if(cart.gifts>0){
       //   setOrder([...order,{id:}])
       //  }

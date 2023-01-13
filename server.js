@@ -39,13 +39,13 @@ app.post("/checkout", async (req,resp)=>{
         mode: 'payment',
         success_url: "http://localhost:3000/success",
         cancel_url: "http://localhost:3000/",
-        customer_email:"marko@me.com",
+        // customer_email:"marko@me.com",
         custom_text:{
             submit:{message:"test custom text"}
         },
-        metadata:{
-            company_name:"CenterCentre"
-        },
+        // metadata:{
+        //     company_name:"CenterCentre"
+        // },
 
     });
 
