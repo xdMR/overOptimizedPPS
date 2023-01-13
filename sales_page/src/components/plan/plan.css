@@ -1,3 +1,35 @@
+.plans .plan:last-of-type .pillow:first-of-type::before{
+    content: "Recommended";
+    position: absolute;
+    right:20px;
+    top: -10px;
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-size: 18px;
+    color: purple;
+    background-color: rgb(247, 239, 248);
+    border: 2px solid purple;
+    font-weight: 600;
+    transform: scale(1);
+    animation: pulse-purple 2s infinite;
+}
+@keyframes pulse-purple {
+    0% {
+      transform: scale(0.97);
+      box-shadow: 0 0 0 0px rgba(142, 68, 173, 0.5);
+    }
+
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 10px rgba(142, 68, 173, 0);
+    }
+
+    100% {
+      transform: scale(0.97);
+      box-shadow: 0 0 0 0 rgba(142, 68, 173, 0);
+    }
+  }
+
 .plans{
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
@@ -5,12 +37,13 @@
     flex-basis: 50%;
     margin:5px;
     flex-direction: row;
-
 }
 .plan{
+    position: relative;
     margin:5px;
     flex-basis: 50%;
 }
+
 .plan h2{
     font-family: 'Times New Roman', Times, serif;
     font-size:25px;
@@ -20,7 +53,7 @@
     margin:0px 0 3px 0;
 }
 .description{
-    font-size: 14px;
+    font-size: 16px;
     margin: 7px 0;
 }
 .pillow{
@@ -60,7 +93,7 @@
     display: flex;
   }
   .pillowHeader svg{
-    padding-right: 15px;
+    margin-right: 15px;
   }
   .topbutton {
     padding-right: 10px;
