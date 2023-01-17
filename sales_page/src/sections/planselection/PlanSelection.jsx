@@ -15,38 +15,39 @@ function PlanSelection() {
   const navigate = useNavigate();
 
   const PlanDataRegular={
-    header:"Outcome-Driven UX Metrics Fundamentals Package",
-    description:"Best for teams that want to enhance their learning journey with tailored coaching experience. ",
-    price:(cart.cart.teammembers>1)?397:447,
-    seats:25-cart.cart.teammembers,
-    buttonText:"Select Regular",
+    header:"Fundamentals Package",
+    description:"Best for teams that want to want to quickly acquire fundamentals and start applying them in their projects. ",
+    price:(cart.cart.teammembers>1)?429:699,
+    seats:105-cart.cart.teammembers,
+    buttonText:"Select Fundamental",
     pillows:[
-      {child:"Five 90-minute live sessions with Jared Spool."},
-      {parent:"Ground-breaking concepts behind:", children:["UX Outcomes", "UX Success Metrics", "UX Progress Metrics", "Problem-Value Metrics", "Instrumenting Outcome-based UX Measurements"]},
-      {child:"Your Outcome-Driven UX Metrics Planning Workbook."},
+      {child:"Self-paced course with Q&A Session"},
+      {parent:"Guided exercises for building your own:", children:["Strategy Plan ", "Excellence checklist", "Accountability check system"]},
+      {child:"5 mentor sessions/mock design exercises."},
       {child:"Access to extended resources for developing your UX metrics strategy."},
-      {child:"A private community to get your questions answered by Jared and other members."},
-      {child:"9 months of access to all session recordings, Q&As, and notes (through Nov 6, 2023)."},
+      {child:"Access to resources for developing your strategy projects"},
+      {child:"100% money-back guarantee after you attended all session and finished all exercises"},
+      {child:"6 months of access to all recordings, resources Q&As sessions"},
     ]
   }
   const PlanDataVIP={
     header:"Advanced Concepts VIP Package",
     description:"Best for teams that want to enhance their learning journey with tailored coaching experience. ",
-    price:(cart.cart.teammembers>1)?597:647,
-    seats:185-cart.cart.teammembers,
+    price:(cart.cart.teammembers>1)?799:999,
+    seats:15-cart.cart.teammembers,
     buttonText:"Select VIP",
     pillows:[
-      {child:"Five 90-minute live sessions with Jared Spool."},
-      {parent:"Ground-breaking concepts behind:", children:["UX Outcomes", "UX Success Metrics", "UX Progress Metrics", "Problem-Value Metrics", "Instrumenting Outcome-based UX Measurements"]},
-      {child:"Your Outcome-Driven UX Metrics Planning Workbook."},
+      {child:"Instructor-led live course with Q&A Sessions"},
+      {parent:"Guided exercises for building your own:", children:["Strategy Plan ", "Excellence checklist", "Accountability check system"]},
+      {child:"5 mentor sessions/mock design exercises."},
       {child:"Access to extended resources for developing your UX metrics strategy."},
-      {child:"A private community to get your questions answered by Jared and other members."},
-      {child:"9 months of access to all session recordings, Q&As, and notes (through Nov 6, 2023)."},
+      {child:"Access to resources for developing your strategy projects."},
+      {child:"100% money-back guarantee with no stringsattached."},
+      {child:"12 months of access to all recordings, resources Q&As sessions"},
 
-      {parent:"Gain confidence with tailored coaching to:", children:["Create your UX Outcomes", "Identify your team’s target metrics.", "Integrate your UX metrics into organizational goals"]},
-      {child:"Three additional 90-minute live sessions. Only for VIP members."},
-      {child:"A 60-minute VIP-only Intensive Prep Coaching session with Dr. Leslie Jensen-Inman."},
-      {child:"An intimate, private community of only VIP members with Jared and Leslie to get the mentoring you need to be successful."},
+      {child:"2 Designers and 1 coder joins your weekly meetings."},
+      {child:"Access to our own professional resources."},
+      {child:"Attend our own strategy planning and design sessions."},
     ]
   }
 
@@ -68,8 +69,8 @@ function PlanSelection() {
 
   return (
     <Container>
-      <Headline title="UX Metrics Your Stakeholders
-Can't Ignore " pretitle="Pricing" sendStyle={{ maxWidth: "400px", margin: "0 auto" }} />
+      <Headline title="Stellar Strategy for
+Visionary Teams " pretitle="Pricing" sendStyle={{ maxWidth: "400px", margin: "0 auto" }} />
       <SliderTeam />
       <div className="plans" id='plans'>
         <Plan planData={PlanDataRegular}  onClick={() => { selectPlan("price_1MLYKjCpotfJBdLxeR976tgu", "REG", cart.cart.teammembers) }}></Plan>

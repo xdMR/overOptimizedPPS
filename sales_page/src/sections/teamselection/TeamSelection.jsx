@@ -125,10 +125,10 @@ function Teamselection() {
                         <h2 className='total'>Your Total for {membnumber} {membnumber > 1 ? "seats" : "seat"} with {(cart.cart.package === "REG") ? "Fundamentals" : "VIP"} package is:</h2>
                         <h1 className='price'>
                           {/* {if members>1 use team pricing and then decide whether to go with Regular or Vip pricing} */}
-                          ${(membnumber > 1) ? (cart.cart.package === "REG") ? membnumber * 397 : membnumber * 597 : (cart.cart.package === "REG") ? membnumber * 447 : membnumber * 647}
+                          ${(membnumber > 1) ? (cart.cart.package === "REG") ? membnumber * 429 : membnumber * 799 : (cart.cart.package === "REG") ? membnumber * 699 : membnumber * 999}
                         </h1>
 
-                        <span>(${(membnumber > 1) ? (cart.cart.package === "REG") ? 397 : 597 : (cart.cart.package === "REG") ? 447 : 647} per person)</span>
+                        <span>(${(membnumber > 1) ? (cart.cart.package === "REG") ? 429 : 799 : (cart.cart.package === "REG") ? 699 : 999} per person)</span>
 
                       </div>
                       <div className="pay">
