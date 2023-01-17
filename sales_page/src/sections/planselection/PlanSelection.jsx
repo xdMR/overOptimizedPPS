@@ -1,5 +1,5 @@
-import React, { Children } from 'react'
-import { BrowserRouter, Routes, Route, Outlet, Link, useNavigate } from "react-router-dom";
+import React from 'react'
+import { useNavigate } from "react-router-dom";
 
 
 import { Headline, SliderTeam, Container, Plan, Recordings } from "../../components";

@@ -1,8 +1,8 @@
 import React from 'react'
 import './teamselection.css'
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
-import { Headline, SliderTeam, Container, Plan, Recordings, Button } from "../../components";
+import { Headline, Container, Button } from "../../components";
 import { Formik, Form, Field, FieldArray } from 'formik';
 import { useNavigate } from "react-router-dom";
 
@@ -115,7 +115,7 @@ function Teamselection() {
                     <Container> <div className="goBackWrapper">
                       <div className="goBack" onClick={() => { navigate("/") }}>
                         <div className="icon"><svg width="25" height="28" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M5 5L1 9L5 13M1 9H12C13.0609 9 14.0783 8.57857 14.8284 7.82843C15.5786 7.07828 16 6.06087 16 5C16 3.93913 15.5786 2.92172 14.8284 2.17157C14.0783 1.42143 13.0609 1 12 1H11" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linecap="round" />
+                          <path d="M5 5L1 9L5 13M1 9H12C13.0609 9 14.0783 8.57857 14.8284 7.82843C15.5786 7.07828 16 6.06087 16 5C16 3.93913 15.5786 2.92172 14.8284 2.17157C14.0783 1.42143 13.0609 1 12 1H11" stroke="black" stroke-width="2" stroke-linecap="round" strokeLinecap="round" />
                         </svg>
                         </div>           <div className="text"> Back To Choosing Your Package</div>
                       </div></div></Container>
