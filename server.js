@@ -59,5 +59,6 @@ app.listen(process.env.PORT || 4000, () => console.log("Listening on port 4000!"
 
 app.use(express.static('sales_page/build'))
 app.get('*', (req,res)=>{
-    res.sendFile(__dirname+'/sales_page/build/index.html')
+    res.sendFile(__dirname+'/sales_page/build/index.html');
+    console.log(`listening on port ${process.env.PORT || 4000}`)
 })
