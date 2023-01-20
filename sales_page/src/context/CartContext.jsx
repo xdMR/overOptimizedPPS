@@ -29,7 +29,7 @@ export function CartProvider({ children }) {
 
        const checkout = async () => {
         console.log("Order",order.current);
-        await fetch("https://oops.herokuapp.com:4000/checkout", {
+        await fetch("https://oops.herokuapp.com/checkout", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
