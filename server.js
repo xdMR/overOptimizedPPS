@@ -6,7 +6,7 @@ const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY);
 
 const app = express();
 app.use(cors());
-app.use(express.static("public"));
+// app.use(express.static("public"));
 app.use(express.json());
 
 app.post("/checkout", async (req,resp)=>{
@@ -21,7 +21,7 @@ app.post("/checkout", async (req,resp)=>{
     */
     console.log(req.body);
 
-    //Format to Stripe prefered naming
+    //Format to Stripe preferred naming
     // we have items and Stripe requires "price"
     const items = req.body.items;
     let lineItems =[];
@@ -55,4 +55,9 @@ app.post("/checkout", async (req,resp)=>{
 
 });
 
-app.listen(4000, () => console.log("Listening on port 4000!"));
+app.listen(process.env.PORT || 4000, () => console.log("Listening on port 4000!"));
+
+app.use(express.static('sales_page/build'))
+app.get('*', (req,res)=>{
+    res.sendFile(__dirname+'/sales_page/build/index.html')
+})
